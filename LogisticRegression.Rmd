@@ -1,0 +1,47 @@
+---
+title: "Logistic Regression"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r}
+logistic_data <- read.csv("D:/Punya Naufal/KULIAH/FSD/fsdwithR/framingham.csv")
+head(logistic_data)
+```
+
+$$Simple Logistic Regression$$
+
+```{r}
+nd <- subset(logistic_data, select = c(cigsPerDay, heartRate, prevalentHyp))
+nd
+```
+
+```{r}
+fit <- glm(formula = prevalentHyp~cigsPerDay, data =logistic_data, family = binomial)
+summary(fit)
+```
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+ggplot(nd, aes(x = cigsPerDay, y = prevalentHyp)) + geom_point() + stat_smooth(method = "glm", method.args = list(family = binomial), se = FALSE)
+```
+
+$$Multiple Logistic Regression$$
+
+```{r}
+fit2 <- glm(formula = prevalentHyp~cigsPerDay+heartRate, data = logistic_data, family = binomial)
+summary(fit2)
+```
+
+```{r}
+library(predict3d)
+```
+
+```{r}
+ggPredict(fit2)
+```
+

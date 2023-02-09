@@ -1,0 +1,29 @@
+---
+title: "Naive Bayes"
+output:
+  html_document:
+    df_print: paged
+---
+19532180
+19523118
+
+```{r}
+naive_data <- read.csv("/Users/Deuxieme/Downloads/influenza.csv")
+```
+
+```{r}
+data(naive_data) 
+head(naive_data)
+```
+
+```{r}
+#mengeset data
+ndata <- subset(naive_data, select = c(Chills, runny.nose, head.ache , fever, Flu))
+```
+
+```{r}
+#fitting model data naive bayes
+library(naivebayes)
+Naive_Bayes_Models = naive_bayes(Flu ~., data = ndata)
+Naive_Bayes_Models
+```

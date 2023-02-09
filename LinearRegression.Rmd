@@ -1,0 +1,40 @@
+---
+title: "Linear Regression"
+output:
+  html_document:
+    df_print: paged
+---
+
+
+```{r}
+data(longley)
+head(longley)
+```
+$$ Simple Linear Regression$$
+```{r}
+ndata <- subset(longley, select = c(Population, Employed))
+ndata
+```
+```{r}
+fit <- lm(Population~Employed, longley)
+summary(fit)
+```
+```{r}
+library(predict3d)
+ggPredict(fit)
+```
+```{r}
+ggPredict(fit, xpos = 0.75, vjust = 1.5, show.error = TRUE)
+```
+$$ Multiple Linear Regression $$
+```{r}
+fit2 <- lm(Population~Employed+GNP.deflator, longley) 
+summary(fit2)
+```
+```{r}
+ggPredict(fit2)
+```
+```{r}
+ggPredict(fit2, show.error = TRUE, facet.modx = TRUE)
+```
+
