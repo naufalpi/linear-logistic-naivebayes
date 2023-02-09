@@ -1,1 +1,1 @@
-tes
+This is an assignment for a data science fundamentals course which I did with my friend named Ghilman Faza.
